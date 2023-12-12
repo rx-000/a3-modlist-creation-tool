@@ -4,9 +4,9 @@ This web application, built using Flask (Python), simplifies the process of crea
 
 ## How It Works
 
-1. **Server Modlist Integration:** The tool uses the server's modlist as its base.
-2. **User Whitelist Selection:** Users can easily select additional whitelisted mods they wish to include.
-3. **Compilation and Download:** The tool consolidates the selected mods and the server's modlist into a single modlist file, ready for download and import.
+1. **Base Modlist Integration:** The tool uses `mandatory.html` as its base.
+2. **User Whitelist Selection:** Users can easily select additional whitelisted mods from `whitelist.html` they wish to include.
+3. **Compilation and Download:** The tool consolidates the selected mods and the base modlist into a single modlist file, ready for download and import.
 
 ## How to Use
 
