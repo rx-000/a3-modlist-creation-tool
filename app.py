@@ -75,7 +75,7 @@ def fill_mandatory_mods(soup):
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/modlist', methods=['GET', 'POST'])
 def download_html():
     mods_dict = extract_mods_info("whitelist.html")
     if request.method == 'POST':
