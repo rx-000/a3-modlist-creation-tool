@@ -15,3 +15,7 @@ This web application, built using Flask (Python), simplifies the process of crea
 - `whitelist.html`: Whitelisted mods (e.g. client-side mods)
 
 2. Run via `app.py`; configure port as needed
+
+## Origin
+
+This tool was initially conceptualized and designed for [**5 RANGER**](https://discord.gg/3RpwdKsPWU).
