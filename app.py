@@ -62,9 +62,9 @@ def extract_mods_info(html_file):
     return mods_dict
 
 
-def fill_mandatory_mods(soup):
+def fill_mandatory_mods(soup, modlist):
 
-    mandatory_mods = extract_mods_info("mandatory.html")
+    mandatory_mods = extract_mods_info(modlist)
 
     for display_name, link in mandatory_mods.items():
         soup = add_mod(soup, display_name, link)
@@ -79,11 +79,18 @@ app = Flask(__name__)
 def download_html():
     mods_dict = extract_mods_info("whitelist.html")
     if request.method == 'POST':
+
+        if request.form['action'] == '1':
+            modlist = "mandatory.html"
+
+        elif request.form['action'] == '2':
+            modlist = "mm.html"
+        
+        soup = empty_mod_list_table(modlist)
+        soup = fill_mandatory_mods(soup, modlist)
+
         selected_mods = request.form.getlist('mod')
-
-        soup = empty_mod_list_table("mandatory.html")
-        soup = fill_mandatory_mods(soup)
-
+        
         for display_name in selected_mods:
             link = mods_dict.get(display_name)
             if link:
