@@ -1,7 +1,15 @@
 from flask import Flask, render_template, request, send_file
 from datetime import datetime
 from bs4 import BeautifulSoup
+import os
 
+
+modlists = []
+
+files = [f for f in os.listdir("./modlists") if os.path.isfile(os.path.join("./modlists", f))]
+
+for file in files:
+    modlists.append(file)
 
 def empty_mod_list_table(html_file):
     with open(html_file, 'r') as file:
@@ -80,11 +88,7 @@ def download_html():
     mods_dict = extract_mods_info("whitelist.html")
     if request.method == 'POST':
 
-        if request.form['action'] == '1':
-            modlist = "mandatory.html"
-
-        elif request.form['action'] == '2':
-            modlist = "mm.html"
+        modlist = f"./modlists/{request.form['action']}"
         
         soup = empty_mod_list_table(modlist)
         soup = fill_mandatory_mods(soup, modlist)
@@ -102,7 +106,7 @@ def download_html():
         filename = f'modlist_{datetime.now().strftime("%Y%m%d%H%M%S")}.html'
 
         return send_file('modlist.html', as_attachment=True, download_name=filename)
-    return render_template('index.html', mods=mods_dict)
+    return render_template('index.html', mods=mods_dict, modlists=modlists)
 
 
 if __name__ == '__main__':
