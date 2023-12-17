@@ -4,17 +4,17 @@ This web application, built using Flask (Python), simplifies the process of crea
 
 ## How It Works
 
-1. **Base Modlist Integration:** The tool uses `mandatory.html` as its base.
+1. **Base Modlist Integration:** The tool uses modlists inside the `./modlists` directory as base modlusts.
 2. **User Whitelist Selection:** Users can easily select additional whitelisted mods from `whitelist.html` they wish to include.
 3. **Compilation and Download:** The tool consolidates the selected mods and the base modlist into a single modlist file, ready for download and import.
 
 ## How to Use
 
-1. Add the following files to the main directory:
-- `mandatory.html`: Base mods (e.g. server modlist)
-- `whitelist.html`: Whitelisted mods (e.g. client-side mods)
+1. Create`./modlists` directory and add base modlists (e.g. server modlist).
 
-2. Run via `app.py`; configure port as needed
+2. Add `whitelist.html`: Whitelisted mods (e.g. client-side mods)
+
+3. Run via `app.py`; configure port as needed
 
 ## Origin
 
