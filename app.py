@@ -28,18 +28,17 @@ def empty_mod_list_table(html_file):
 def add_mod(soup, display_name, link):
     mod_table = soup.find('div', class_='mod-list').find('table')
 
-    new_row = soup.new_tag('tr', data_type='ModContainer')
+    new_row = soup.new_tag('tr', attrs={'data-type': 'ModContainer'})
 
-    display_name_td = soup.new_tag('td', data_type='DisplayName')
+    display_name_td = soup.new_tag('td', attrs={'data-type': 'DisplayName'})
     display_name_td.string = display_name
 
     from_source_td = soup.new_tag('td')
     from_source_td.append(soup.new_tag('span', class_='from-steam'))
-    from_source_td.find('span')['class'] = 'from-steam'
     from_source_td.find('span').string = 'Steam'
 
     link_td = soup.new_tag('td')
-    link_td.append(soup.new_tag('a', href=link))
+    link_td.append(soup.new_tag('a', href=link, attrs={'data-type': 'Link'}))
     link_td.find('a')['href'] = link
     link_td.find('a').string = link
 
